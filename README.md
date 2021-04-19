@@ -15,4 +15,4 @@
 - ConstValue의 `fileOutput`변수에 저장
 
 ### 주의사항
-> 아직 실행이 안됩니다
+> 아직 실행이 안됩니다! git clone 받아도 실행 불가
