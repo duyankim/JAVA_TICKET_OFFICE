@@ -1,5 +1,5 @@
 
-## git clone 받아도 실행 불가합니다!!!!!
+# JAVA_TICKET_OFFICE
 
 ## 주제
 놀이공원 티켓 발급 프로그램
