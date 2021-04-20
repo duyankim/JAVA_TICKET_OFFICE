@@ -1,6 +1,7 @@
 package kiosk;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,9 +11,17 @@ public class WriteFile {
 	BufferedWriter bw;
 
 	public void writeFile(SetData data) throws IOException, FileNotFoundException {
-		bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ConstValue.fileOutput, true), "utf-8"));
-		bw.append(String.format("%s,%s,%s,%d,%d,%s\n", data.getDate(), data.getDayOrNight(), data.getAgeGroup(),
-				data.getTicketCount(), data.getDiscount()));
-		bw.close();
+		bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ConstValue.fileOutput, true), "MS949"));
+		
+		File file = new File(ConstValue.fileOutput);
+		
+		if (file.exists()) {
+			bw.append(String.format("%s,%s,%s,%d,%s\n", data.getDate(), data.getDayOrNight(), data.getAgeGroup(),
+					data.getTicketCount(), data.getDiscount()));
+			bw.close();
+		} else {
+			bw.write("날자, 권종, 연령구분, 수량, 가격, 우대사항");
+			bw.close();
+		}
 	}
 }

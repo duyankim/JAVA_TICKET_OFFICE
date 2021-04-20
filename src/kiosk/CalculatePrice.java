@@ -65,7 +65,7 @@ public class CalculatePrice {
 		} else { // 아직 생일이 지나지 않은 경우
 			age = koreanAge - ConstValue.BEFORE_BIRTH;
 		}
-
+		
 		return age;
 	}
 
@@ -95,31 +95,17 @@ public class CalculatePrice {
 
 		if (ageGroup == ConstValue.BABY) {
 			calcPrice = ConstValue.BABY_PRICE;
-		} else if (ageGroup == ConstValue.CHILD) {
-			if (dayOrNight == 1) {
-				calcPrice = ConstValue.CHILD_DAY_PRICE;
-			} else if (dayOrNight == 2) {
-				calcPrice = ConstValue.CHILD_NIGHT_PRICE;
-			}
-		} else if (ageGroup == ConstValue.TEEN) {
-			if (dayOrNight == 1) {
-				calcPrice = ConstValue.TEEN_DAY_PRICE;
-			} else if (dayOrNight == 2) {
-				calcPrice = ConstValue.TEEN_NIGHT_PRICE;
-			}
-		} else if (ageGroup == ConstValue.ADULT) {
-			if (dayOrNight == 1) {
-				calcPrice = ConstValue.ADULT_DAY_PRICE;
-			} else if (dayOrNight == 2) {
-				calcPrice = ConstValue.ADULT_NIGHT_PRICE;
-			}
-		} else {
-			if (dayOrNight == 1) {
-				calcPrice = ConstValue.OLD_DAY_PRICE;
-			} else if (dayOrNight == 2) {
-				calcPrice = ConstValue.OLD_NIGHT_PRICE;
-			}
-		}
+		} else if (dayOrNight == 1) {
+			if (ageGroup == ConstValue.CHILD) calcPrice = ConstValue.CHILD_DAY_PRICE;
+			else if (ageGroup == ConstValue.TEEN) calcPrice = ConstValue.TEEN_DAY_PRICE;
+			else if (ageGroup == ConstValue.ADULT) calcPrice = ConstValue.ADULT_DAY_PRICE;
+			else calcPrice = ConstValue.OLD_DAY_PRICE;
+		} else if (dayOrNight == 2) {
+			if (ageGroup == ConstValue.CHILD) calcPrice = ConstValue.CHILD_NIGHT_PRICE;
+			else if (ageGroup == ConstValue.TEEN) calcPrice = ConstValue.TEEN_NIGHT_PRICE;
+			else if (ageGroup == ConstValue.ADULT) calcPrice = ConstValue.ADULT_NIGHT_PRICE;
+			else calcPrice = ConstValue.OLD_NIGHT_PRICE;
+		} 
 
 		return calcPrice;
 	}
@@ -155,30 +141,26 @@ public class CalculatePrice {
 	}
 	
 	/* 계산 함수 호출 */
-	public int processIntegration(long idNum, int dayOrNight, int dcSelect, int ticketCount) {
+	public int processIntegration(long idNum, int dayOrNight, int ticketCount, int dcSelect) {
 
-		int regularPrice, discountPrice = 0, priceResult;
-		int age, ageGroup;
-		SetData data = new SetData();
+		int regularPrice, discountPrice, priceResult, age, ageGroup;
 		
 		//만 나이 계산
 		age = calcAge(idNum);
+		SetData data = new SetData();
 		data.setAge(age);
 		
 		//나이에 따른 금액 계산
 		ageGroup = calcAgeGroup(age);
-		data.setAgeGroup(ageGroup);
-		
+
 		//주야권에 따른 금액 계산
 		regularPrice = calcDayOrNightPrice(ageGroup, dayOrNight);
-		data.setRegularPrice(regularPrice);
-		
+
 		//우대사항에 따른 할인 계산
 		discountPrice = calcDiscount(regularPrice, dcSelect);
 		
 		//주문 갯수에 따른 최종 금액 계산
 		priceResult = calcPriceResult(discountPrice, ticketCount);
-		data.setResultPrice(priceResult);
 		
 		//최종 요금 확인
 		return priceResult;

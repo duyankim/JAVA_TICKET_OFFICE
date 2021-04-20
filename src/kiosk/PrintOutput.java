@@ -14,7 +14,7 @@ public class PrintOutput {
 
 	// 에러 메세지 출력
 	void printErrorMsgWrongID() {
-		System.out.println("주민등록번호가 잘목 입력되었습니다. 2000년대 이후 출생자는 주민등록번호의 7번째 자리가 3 또는 4여야 합니다.");
+		System.out.println("2000년대 이후 출생자는 주민등록번호의 7번째 자리가 3 또는 4여야 합니다.");
 	}
 
 	/* 티켓 가격 출력 */
@@ -31,20 +31,21 @@ public class PrintOutput {
 
 		// 콘솔에 프린트
 		System.out.printf("티켓 발권을 종료합니다. 감사합니다\n");
-		System.out.printf("=============에버랜드=============\n");
+		System.out.printf("=======================에버랜드=======================\n");
 
 		for (int i = 0; i < orderData.size(); i++) {
 			data = orderData.get(i);
+			
 
-			System.out.printf("%s  %s  X  %d  %8d  *%s", data.getDayOrNight(), data.getAgeGroup(),
-					data.getTicketCount(), data.getResultPrice(), data.getDiscount());
+			System.out.printf("%s\t%s\tX\t%d\t%8d\t*%s", data.getDayOrNight_str(), data.getAgeGroup(),
+					data.getTicketCount(), data.getResultPrice(), data.getDcGroup());
 
 			// 파일에 작성
 			write.writeFile(data);
 		}
 		System.out.printf("\n");
 		System.out.printf("입장료 총액은 %d원 입니다.\n", totalPrice);
-		System.out.printf("==================================\n");
+		System.out.printf("======================================================\n");
 		System.out.printf("\n");
 	}
 
