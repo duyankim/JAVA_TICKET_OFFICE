@@ -35,12 +35,16 @@ public class PrintOutput {
 
 		for (int i = 0; i < orderData.size(); i++) {
 			data = orderData.get(i);
-			
+
 			System.out.printf("%s\t%s X %d\t%8d    *우대적용%5s\n", data.getDayOrNight(), data.getAgeGroup(),
 					data.getTicketCount(), data.getResultPrice(), data.getDcGroup());
 
 			// 파일에 작성
 			write.writeFile(data);
+
+			// DB에 작성
+			write.writeDB(data.getDbDate(), data.getDayOrNight(), data.getAgeGroup(), data.getTicketCount(),
+					data.getResultPrice(), data.getDcGroup());
 		}
 		System.out.printf("\n");
 		System.out.printf("입장료 총액은 %d원 입니다.\n", totalPrice);
