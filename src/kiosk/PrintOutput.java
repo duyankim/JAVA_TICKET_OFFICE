@@ -27,6 +27,7 @@ public class PrintOutput {
 	public void orderPrint(int totalPrice, ArrayList<SetData> orderData) throws FileNotFoundException, IOException {
 		CalculatePrice price = new CalculatePrice();
 		WriteFile write = new WriteFile();
+		DbOutput db = new DbOutput();
 		SetData data = null;
 
 		// 콘솔에 프린트
@@ -43,7 +44,7 @@ public class PrintOutput {
 			write.writeFile(data);
 
 			// DB에 작성
-			write.writeDB(data);
+			db.connectDB(data);
 		}
 		System.out.printf("\n");
 		System.out.printf("입장료 총액은 %d원 입니다.\n", totalPrice);
