@@ -43,8 +43,7 @@ public class PrintOutput {
 			write.writeFile(data);
 
 			// DB에 작성
-			write.writeDB(data.getDbDate(), data.getDayOrNight(), data.getAgeGroup(), data.getTicketCount(),
-					data.getResultPrice(), data.getDcGroup());
+			write.writeDB(data);
 		}
 		System.out.printf("\n");
 		System.out.printf("입장료 총액은 %d원 입니다.\n", totalPrice);

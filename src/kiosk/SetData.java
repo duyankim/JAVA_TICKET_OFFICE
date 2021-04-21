@@ -1,6 +1,5 @@
 package kiosk;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,7 +12,6 @@ public class SetData {
 	
 	private int ageGroup;
 	private String date;
-	private Timestamp dbDate;
 
 	public SetData () {
 		
@@ -120,16 +118,5 @@ public class SetData {
 
 	public void setDate(String date) {
 		this.date = date;
-	}
-	
-
-	public Timestamp getDbDate() {
-		java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-		dbDate = date;
-		return dbDate;
-	}
-
-	public void setDbDate(Timestamp dbDate) {
-		this.dbDate = dbDate;
 	}
 }

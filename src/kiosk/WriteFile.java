@@ -30,21 +30,23 @@ public class WriteFile {
 		}
 	}
 	
-	public void writeDB(Timestamp date, String dayOrNight, String ageGroup, int ticketCount, int resultPrice, String dcGroup) {
+	public void writeDB(SetData data) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "000000");
 			
 			Statement stmt = conn.createStatement();
 			
+			java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+			
 			stmt.execute("INSERT INTO `report2` (`date`, `type`, `age`, `count`, `price`, `advantage`)" 
 			+ "VALUES ('" 
 					+ date + "', '"
-					+ dayOrNight + "', '" 
-					+ ageGroup + "', '" 
-					+ ticketCount + "', '" 
-					+ resultPrice +"', '" 
-					+ dcGroup + "');");
+					+ data.getDayOrNight() + "', '" 
+					+ data.getAgeGroup() + "', '" 
+					+ data.getTicketCount() + "', '" 
+					+ data.getResultPrice() +"', '" 
+					+ data.getDcGroup() + "');");
 			
 			ResultSet rset = stmt.executeQuery("select * from `report2`");
 	
