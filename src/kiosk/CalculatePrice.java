@@ -139,31 +139,4 @@ public class CalculatePrice {
 		int resultPrice = discountPrice * ticketCount;
 		return resultPrice;
 	}
-	
-	/* 계산 함수 호출 */
-	public int processIntegration(long idNum, int dayOrNight, int ticketCount, int dcSelect) {
-
-		int regularPrice, discountPrice, priceResult, age, ageGroup;
-		
-		//만 나이 계산
-		age = calcAge(idNum);
-		SetData data = new SetData();
-		data.setAge(age);
-		
-		//나이에 따른 금액 계산
-		ageGroup = calcAgeGroup(age);
-
-		//주야권에 따른 금액 계산
-		regularPrice = calcDayOrNightPrice(ageGroup, dayOrNight);
-
-		//우대사항에 따른 할인 계산
-		discountPrice = calcDiscount(regularPrice, dcSelect);
-		
-		//주문 갯수에 따른 최종 금액 계산
-		priceResult = calcPriceResult(discountPrice, ticketCount);
-		
-		//최종 요금 확인
-		return priceResult;
-	}
-
 }

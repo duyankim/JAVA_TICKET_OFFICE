@@ -64,7 +64,9 @@ public class GetInput {
 						print.printErrorMsgWrongID();
 					}
 				} 
-			} 
+			} else {
+				print.printErrorMsg();
+			}
 		}
 		return idNum;
 	}

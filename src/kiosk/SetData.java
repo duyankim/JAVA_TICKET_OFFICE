@@ -1,52 +1,42 @@
 package kiosk;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SetData {
 	private int dayOrNight;
-	private long idNum;
 	private int ticketCount;
 	private int dcGroup;
 	private int resultPrice;
-	
 	private int age;
+	
 	private int ageGroup;
-	
-	private String dayOrNight_str;
-	private String ageGroup_str;
-	private String dcGroup_str;
-	
+	private String date;
+
 	public SetData () {
 		
 	}
 
-	public SetData (int dayOrNight, long idNum, int ticketCount, int dcGroup, int resultPrice) {
+	public SetData (int dayOrNight, int age, int ticketCount, int dcGroup, int resultPrice) {
 		this.dayOrNight = dayOrNight;
-		this.idNum = idNum;
+		this.age = age;
 		this.ticketCount = ticketCount;
 		this.dcGroup = dcGroup;
 		this.resultPrice = resultPrice;
 	}
 
 	public String getDayOrNight() {
+		String dayOrNight_str = "";
 		if (dayOrNight == 1) {
-			this.dayOrNight_str = "주간권";
+			dayOrNight_str = "주간권";
 		} else if (dayOrNight == 2) {
-			this.dayOrNight_str = "야간권";
+			dayOrNight_str = "야간권";
 		} 
 		return dayOrNight_str;
 	}
 
 	public void setDayOrNight(int dayOrNight) {
 		this.dayOrNight = dayOrNight;
-	}
-
-	public long getIdNum() {
-		return idNum;
-	}
-
-	public void setIdNum(long idNum) {
-		this.idNum = idNum;
 	}
 
 	public int getAge() {
@@ -58,6 +48,7 @@ public class SetData {
 	}
 
 	public String getAgeGroup() {
+		String ageGroup_str = "";
 		if (age < ConstValue.MIN_CHILD) {
 			ageGroup_str = "유아";
 		} else if (age >= ConstValue.MIN_CHILD && age <= ConstValue.MAX_CHILD) {
@@ -84,7 +75,8 @@ public class SetData {
 		this.ticketCount = ticketCount;
 	}
 
-	public int getDcGroup() {
+	public String getDcGroup() {
+		String dcGroup_str = "";
 		switch (dcGroup) {
 		case 2: 
 			dcGroup_str = "장애인";
@@ -102,7 +94,7 @@ public class SetData {
 			dcGroup_str = "없음";
 			break;
 		}
-		return dcGroup;
+		return dcGroup_str;
 	}
 
 	public void setDcGroup(int dcGroup) {
@@ -117,5 +109,14 @@ public class SetData {
 		this.resultPrice = resultPrice;
 	}
 
-	
+	public String getDate() {
+		Date today = new Date(); 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		String date = sdf.format(today);
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 }

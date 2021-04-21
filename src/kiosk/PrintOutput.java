@@ -31,13 +31,12 @@ public class PrintOutput {
 
 		// 콘솔에 프린트
 		System.out.printf("티켓 발권을 종료합니다. 감사합니다\n");
-		System.out.printf("=======================에버랜드=======================\n");
+		System.out.printf("=======================에버랜드=========================\n");
 
 		for (int i = 0; i < orderData.size(); i++) {
 			data = orderData.get(i);
 			
-
-			System.out.printf("%s\t%s\tX\t%d\t%8d\t*%s", data.getDayOrNight_str(), data.getAgeGroup(),
+			System.out.printf("%s\t%s X %d\t%8d    *우대적용%5s\n", data.getDayOrNight(), data.getAgeGroup(),
 					data.getTicketCount(), data.getResultPrice(), data.getDcGroup());
 
 			// 파일에 작성
@@ -45,7 +44,7 @@ public class PrintOutput {
 		}
 		System.out.printf("\n");
 		System.out.printf("입장료 총액은 %d원 입니다.\n", totalPrice);
-		System.out.printf("======================================================\n");
+		System.out.printf("========================================================\n");
 		System.out.printf("\n");
 	}
 

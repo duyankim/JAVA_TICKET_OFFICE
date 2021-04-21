@@ -16,11 +16,11 @@ public class WriteFile {
 		File file = new File(ConstValue.fileOutput);
 		
 		if (file.exists()) {
-			bw.append(String.format("%s,%s,%s,%d,%s\n", data.getDate(), data.getDayOrNight(), data.getAgeGroup(),
-					data.getTicketCount(), data.getDiscount()));
+			bw.append(String.format("%s,%s,%s,%d,%d,%s\n", data.getDate(), data.getDayOrNight(), data.getAgeGroup(),
+					data.getTicketCount(), data.getResultPrice(), data.getDcGroup()));
 			bw.close();
 		} else {
-			bw.write("날자, 권종, 연령구분, 수량, 가격, 우대사항");
+			bw.write("날짜, 권종, 연령구분, 수량, 가격, 우대사항");
 			bw.close();
 		}
 	}

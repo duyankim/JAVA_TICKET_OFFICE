@@ -9,7 +9,7 @@ public class RunMain {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-		ArrayList<DataOld> orderData = new ArrayList<DataOld>();
+		ArrayList<SetData> orderData = new ArrayList<SetData>();
 		GetInput input = new GetInput();
 		CalculatePrice price = new CalculatePrice();
 		PrintOutput print = new PrintOutput();
@@ -28,13 +28,12 @@ public class RunMain {
 				// 1) 이어서 주문한다 2) 주문을 멈춘다
 				
 				/* 입력함수 호출 */
-				int dayOrNight, ticketCount, dcSelect;
+				int dayOrNight, ticketCount, dcSelect, age, ageGroup, regularPrice, dcPrice, priceResult;
 				long idNum;
 				
 				// 티켓 종류 입력
 				dayOrNight = input.inputTicketSelect();
 
-				
 				// 주민등록번호 입력
 				idNum = input.inputIDNumber();
 				
@@ -45,9 +44,24 @@ public class RunMain {
 				dcSelect = input.inputDiscountSelect();
 				
 				/* 요금 계산 */
-				int priceResult = price.processIntegration(idNum, dayOrNight, ticketCount, dcSelect);
+				CalculatePrice cal = new CalculatePrice();
 				
-				data = new SetData(dayOrNight, idNum, ticketCount, dcSelect, priceResult);
+				//만 나이 계산
+				age = cal.calcAge(idNum);
+				
+				//나이에 따른 금액 계산
+				ageGroup = cal.calcAgeGroup(age);
+
+				//주야권에 따른 금액 계산
+				regularPrice = cal.calcDayOrNightPrice(ageGroup, dayOrNight);
+
+				//우대사항에 따른 할인 계산
+				dcPrice = cal.calcDiscount(regularPrice, dcSelect);
+				
+				//주문 갯수에 따른 최종 금액 계산
+				priceResult = cal.calcPriceResult(dcPrice, ticketCount);
+				
+				data = new SetData(dayOrNight, age, ticketCount, dcSelect, priceResult);
 
 				/* 주문내역 저장 */
 				SaveData save = new SaveData();
@@ -83,7 +97,5 @@ public class RunMain {
 			totalPrice = 0;
 			
 		} while (isExit == 2);
-
 	}
-
 }
