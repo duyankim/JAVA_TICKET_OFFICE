@@ -36,7 +36,7 @@ public class ReadFile {
 		return reportData;
 	}
 	
-	/* 자료구조에 사용 데이터 읽기 */
+	/* 자료구조에 사용될 데이터 읽기 */
 	public List<SalesData> setData(ArrayList<String[]> reportData) {
 		 List<SalesData> list = new ArrayList<SalesData>();
 		 String[] eachLine = null;

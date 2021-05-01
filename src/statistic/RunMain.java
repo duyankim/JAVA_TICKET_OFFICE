@@ -14,6 +14,6 @@ public class RunMain {
 		
 		PrintOutput print = new PrintOutput();
 		print.salesTypePrint(list);
-		print.dailyOutcomePrint(list);
+		print.dailyIncomePrint(list);
 	}
 }

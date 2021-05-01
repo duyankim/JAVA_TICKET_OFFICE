@@ -26,7 +26,7 @@ public class SalesData {
 	}
 
 	public int getType() {
-		int type_int=0;
+		int type_int = 0;
 		if (type.equals("주간권")) {
 			type_int = ConstValue.TYPE_INT[0];
 		} else if (type.equals("야간권")) {
