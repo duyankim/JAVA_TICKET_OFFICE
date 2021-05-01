@@ -17,9 +17,6 @@ public class ConstValue {
 	public static final String[] AGE = {"유아", "어린이", "청소년", "어른", "경로"};
 
 	// 우대 할인 그룹
-	public static final int NOTHING = 1;
-	public static final int DISABLED = 2;
-	public static final int MERIT = 3;
-	public static final int MULTICHILD = 4;
-	public static final int PREGNANT = 5;
+	public static final int[] DC_GROUP = {1, 2, 3, 4, 5}; 
+	//NOTHING, DISABLED, MERIT, MULTICHILD, PREGNANT;
 }

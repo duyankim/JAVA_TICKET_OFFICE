@@ -76,19 +76,19 @@ public class SalesData {
 	}
 
 	public int getDcGroup() {
-		int dcGroup_str = 0;
-		if (dcGroup == "없음") {
-			dcGroup_str = ConstValue.NOTHING;
-		} else if (dcGroup == "장애인") {
-			dcGroup_str = ConstValue.DISABLED;
-		} else if (dcGroup == "국가유공자") {
-			dcGroup_str = ConstValue.MERIT;
-		} else if (dcGroup == "다자녀") {
-			dcGroup_str = ConstValue.MULTICHILD;
-		} else if (dcGroup == "임산부") {
-			dcGroup_str = ConstValue.PREGNANT;
+		int dcGroup_int = 0;
+		if (dcGroup.equals("없음")) {
+			dcGroup_int = ConstValue.DC_GROUP[0];
+		} else if (dcGroup.equals("장애인")) {
+			dcGroup_int = ConstValue.DC_GROUP[1];
+		} else if (dcGroup.equals("국가유공자")) {
+			dcGroup_int = ConstValue.DC_GROUP[2];
+		} else if (dcGroup.equals("다자녀")) {
+			dcGroup_int = ConstValue.DC_GROUP[3];
+		} else if (dcGroup.equals("임산부")) {
+			dcGroup_int = ConstValue.DC_GROUP[4];
 		}
-		return dcGroup_str;
+		return dcGroup_int;
 	}
 
 	public void setDcGroup(String dcGroup) {

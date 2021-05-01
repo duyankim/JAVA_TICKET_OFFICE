@@ -1,13 +1,12 @@
 package statistic;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Calculation {
-
+	
 	/* 권종별 판매 현황 계산 */
-	public int[] typeCalc(List<SalesData> list, int type) {
+	int[] typeCalc(List<SalesData> list, int type) {
 
 		int[] sum = { 0, 0, 0, 0, 0, 0, 0 };
 		// typeCountSum, typePriceSum, babySum, childSum, teenSum, adultSum, oldSum
@@ -30,7 +29,7 @@ public class Calculation {
 	}
 	
 	/* 일자별 매출 계산 */
-	public ArrayList<String[]> dailyCalc(List<SalesData> list) {
+	ArrayList<String[]> dailyCalc(List<SalesData> list) {
 		ArrayList<String[]> sum = new ArrayList<String[]>();
 
 		int dateSum = 0;

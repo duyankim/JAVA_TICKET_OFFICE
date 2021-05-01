@@ -1,13 +1,25 @@
 package statistic;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PrintOutput {
+	
+	/* 파일 모든 결과 출력 */
+	void allDataPrint(List<SalesData> list) {
+		System.out.println("====================== report.csv ======================");
+		System.out.printf("%-6s%4s%6s%4s%8s%6s\n", 
+				"날짜", "권종", "연령구분", "수량", "가격", "우대사항");
+		for (SalesData data : list) {
+			System.out.printf("%-6s  %4d    %6d%6d  %8d    %6d\n", 
+					data.getDate(), data.getType(), data.getAgeGroup(), 
+					data.getCount(), data.getPrice(), data.getDcGroup());
+		}
+		System.out.println("---------------------------------------------------------\n");
+	}
 
 	/* 권종별 판매 현황 출력 */
-	public void salesTypePrint(List<SalesData> list) {
+	void salesTypePrint(List<SalesData> list) {
 		Calculation calc = new Calculation();
 		String dayOrNight=" ";
 
@@ -35,7 +47,7 @@ public class PrintOutput {
 	}
 	
 	/* 일자별 매출 현황 출력 */
-	public void dailyIncomePrint(List<SalesData> list) {
+	void dailyIncomePrint(List<SalesData> list) {
 		Calculation calc = new Calculation();
 		System.out.println("==================== 일자별 매출현황 ====================");
 		
@@ -44,6 +56,6 @@ public class PrintOutput {
 		for(String[] daily : sum){
 			System.out.printf("%s년 %s월 %s일 : 총 매출%10s원\n", daily[0], daily[1], daily[2], daily[3]);
 		}
-		System.out.println("----------------------------------------------------------");
+		System.out.println("---------------------------------------------------------");
 	}
 }

@@ -13,6 +13,7 @@ public class RunMain {
 		list = read.setData(data);
 		
 		PrintOutput print = new PrintOutput();
+		print.allDataPrint(list);
 		print.salesTypePrint(list);
 		print.dailyIncomePrint(list);
 	}
