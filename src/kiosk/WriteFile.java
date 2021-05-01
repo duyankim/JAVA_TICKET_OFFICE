@@ -16,12 +16,13 @@ public class WriteFile {
 
 	public void writeFile(SetData data) throws IOException, FileNotFoundException {
 		BufferedWriter bw;
-		bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ConstValue.fileOutput, true), "MS949"));
 		
 		File file = new File(ConstValue.fileOutput);
+		bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "MS949"));
 		
 		if (file.exists()) {
-			bw.append(String.format("%s,%s,%s,%d,%d,%s\n", data.getDate(), data.getDayOrNight(), data.getAgeGroup(),
+			bw.append(String.format("%s,%s,%s,%d,%d,%s\n", 
+					data.getDate(), data.getDayOrNight(), data.getAgeGroup(),
 					data.getTicketCount(), data.getResultPrice(), data.getDcGroup()));
 			bw.close();
 		} else {

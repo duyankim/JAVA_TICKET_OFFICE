@@ -56,7 +56,7 @@ public class PrintOutput {
 		for(String[] daily : sum){
 			System.out.printf("%s년 %s월 %s일 : 총 매출%10s원\n", daily[0], daily[1], daily[2], daily[3]);
 		}
-		System.out.println("---------------------------------------------------------");
+		System.out.println("---------------------------------------------------------\n");
 	}
 	
 	/* 우대권 판매 현황 출력 */
@@ -68,6 +68,6 @@ public class PrintOutput {
 		for (int i = 0; i < ConstValue.DC_GROUP.length; i++) {
 			System.out.printf("%s : %d매\n", ConstValue.DC[i], dcTickets[i+1]);
 		}
-		System.out.println("---------------------------------------------------------");
+		System.out.println("---------------------------------------------------------\n");
 	}
 }
