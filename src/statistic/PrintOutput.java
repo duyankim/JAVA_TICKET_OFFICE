@@ -1,6 +1,7 @@
 package statistic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PrintOutput {
@@ -15,7 +16,7 @@ public class PrintOutput {
 		for(int type : ConstValue.TYPE_INT){
 			int[] sumType = calc.typeCalc(list, type);
 			
-			if (type == 1) dayOrNight = ConstValsue.TYPE[0];
+			if (type == 1) dayOrNight = ConstValue.TYPE[0];
 			else if (type == 2) dayOrNight = ConstValue.TYPE[1];
 
 			System.out.printf("%s 총 %d매\n", dayOrNight, sumType[0]);

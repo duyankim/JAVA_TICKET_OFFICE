@@ -33,28 +33,24 @@ public class Calculation {
 	public ArrayList<String[]> dailyCalc(List<SalesData> list) {
 		ArrayList<String[]> sum = new ArrayList<String[]>();
 
-		int temp = 0;
+		int dateSum = 0;
 		String date;
-		String[] dateData = new String[4];
-		//year, month, day, outcomeSum
-		
-		for (int i=0; i<list.size()-1; i++) {
-			date = list.get(i).getDate();
 	
+		for (int i=0; i<list.size()-1; i++) {
+			String[] dateData = new String[4]; //year, month, day, outcomeSum
+			date = list.get(i).getDate();
+			
 			if (date.equals(list.get(i+1).getDate())) {
-				temp += list.get(i).getPrice();
+				dateSum += list.get(i).getPrice();
 			} else {
-				temp = 0;
+				dateSum += list.get(i).getPrice();
+				dateData[0] = date.substring(0,4);
+				dateData[1] = date.substring(4,6);
+				dateData[2] = date.substring(6);
+				dateData[3] = Integer.toString(dateSum);
+				sum.add(dateData);
+				dateSum = 0;
 			}
-			dateData[3] = Integer.toString(temp);
-			
-			dateData[0] = date.substring(0,4);
-			dateData[1] = date.substring(4,6);
-			dateData[2] = date.substring(6);
-			
-			sum.add(dateData);
-			temp = 0;
-			System.out.println(Arrays.toString(dateData));
 		}
 		return sum;
 	}
