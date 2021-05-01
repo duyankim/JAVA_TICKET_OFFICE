@@ -19,4 +19,5 @@ public class ConstValue {
 	// 우대 할인 그룹
 	public static final int[] DC_GROUP = {1, 2, 3, 4, 5}; 
 	//NOTHING, DISABLED, MERIT, MULTICHILD, PREGNANT;
+	public static final String[] DC = {"없음", "장애인", "국가유공자", "다자녀", "임산부"};
 }

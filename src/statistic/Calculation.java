@@ -53,4 +53,15 @@ public class Calculation {
 		}
 		return sum;
 	}
+	
+	/* 우대권 판매 현황 계산 */
+	int[] dcCalc(List<SalesData> list) {
+		int[] ticketSales = new int[6]; // ALL, NOTHING, DISABLED, MERIT, MULTICHILD, PREGNANT
+	
+		for (SalesData data : list) {
+			ticketSales[data.getDcGroup()] += data.getCount();
+		}
+		ticketSales[0] = ticketSales[1] + ticketSales[2] + ticketSales[3] + ticketSales[4] + ticketSales[5];
+		return ticketSales;
+	}
 }

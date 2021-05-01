@@ -7,7 +7,7 @@ public class PrintOutput {
 	
 	/* 파일 모든 결과 출력 */
 	void allDataPrint(List<SalesData> list) {
-		System.out.println("====================== report.csv ======================");
+		System.out.println("===================== report.csv =====================");
 		System.out.printf("%-6s%4s%6s%4s%8s%6s\n", 
 				"날짜", "권종", "연령구분", "수량", "가격", "우대사항");
 		for (SalesData data : list) {
@@ -55,6 +55,18 @@ public class PrintOutput {
 		
 		for(String[] daily : sum){
 			System.out.printf("%s년 %s월 %s일 : 총 매출%10s원\n", daily[0], daily[1], daily[2], daily[3]);
+		}
+		System.out.println("---------------------------------------------------------");
+	}
+	
+	/* 우대권 판매 현황 출력 */
+	void dcIncomePrint(List<SalesData> list) {
+		Calculation calc = new Calculation();
+		int[] dcTickets = calc.dcCalc(list);
+		System.out.println("==================== 우대권 판매현황 ====================");
+		System.out.printf("총 판매 티켓수 : %s매\n", dcTickets[0]);
+		for (int i = 0; i < ConstValue.DC_GROUP.length; i++) {
+			System.out.printf("%s : %d매\n", ConstValue.DC[i], dcTickets[i+1]);
 		}
 		System.out.println("---------------------------------------------------------");
 	}

@@ -16,5 +16,6 @@ public class RunMain {
 		print.allDataPrint(list);
 		print.salesTypePrint(list);
 		print.dailyIncomePrint(list);
+		print.dcIncomePrint(list);
 	}
 }
