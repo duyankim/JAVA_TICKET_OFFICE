@@ -14,25 +14,19 @@ public class WriteFile {
 
 	/* 일자별 매출 파일 */
 	void dailySalesFile(List<SalesData> list) {
-		BufferedWriter bw = null;
 		File file = new File(ConstValue.dailySales);
-		
+		BufferedWriter bw = newBufferedWriter(file);
+
 		try {
-			bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(ConstValue.dailySales, true), "MS949"));
-		} catch (UnsupportedEncodingException | FileNotFoundException e1) {
-			e1.printStackTrace();
-		}
-		
-		Calculation calc = new Calculation();
-		ReadFile read = new ReadFile();
-		ArrayList<String[]> sum = calc.dailyCalc(list);
-		
-		try {
-			if (file.exists()) {
-				if (read.isEmpty(ConstValue.dailySales) == true) {
+			if (file.exists() == true) {
+				
+				ReadFile read = new ReadFile();
+				if (read.isEmpty(file) != false) {
 					bw.append("일자, 총 매출\n");
 				}
 				
+				Calculation calc = new Calculation();
+				ArrayList<String[]> sum = calc.dailyCalc(list);
 				for (String[] data : sum) {
 					bw.append(String.format("%s-%s-%s,%s\n", data[0], data[1], data[2], data[3]));
 				}
@@ -45,5 +39,16 @@ public class WriteFile {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	BufferedWriter newBufferedWriter (File file) {
+		BufferedWriter bw = null;
+
+		try {
+			bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "MS949"));
+		} catch (UnsupportedEncodingException | FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		return bw;
 	}
 }

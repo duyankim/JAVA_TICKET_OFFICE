@@ -1,6 +1,7 @@
 package statistic;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -64,13 +65,15 @@ public class ReadFile {
 	}
 
 	/* 파일에 첫 번째 줄이 있는지 확인하기 */
-	boolean isEmpty(String file) {
+	boolean isEmpty(File file) {
 		BufferedReader br;
 		boolean isEmpty = false;
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "MS949"));
 			if ((br.readLine()) == null) {
 				isEmpty = true;
+			} else if ((br.readLine()) != null) {
+				isEmpty = false;
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
