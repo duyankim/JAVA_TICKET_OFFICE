@@ -17,5 +17,8 @@ public class RunMain {
 		print.salesTypePrint(list);
 		print.dailyIncomePrint(list);
 		print.dcIncomePrint(list);
+		
+		WriteFile write = new WriteFile();
+		write.dailySalesFile(list);
 	}
 }

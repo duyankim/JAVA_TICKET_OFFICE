@@ -13,7 +13,7 @@ import java.util.List;
 public class ReadFile {
 
 	/* 파일 읽기 */
-	public ArrayList<String[]> readFile() {
+	ArrayList<String[]> readFile() {
 		BufferedReader br;
 		String line = null;
 		String[] arr;
@@ -37,7 +37,7 @@ public class ReadFile {
 	}
 	
 	/* 자료구조에 사용될 데이터 읽기 */
-	public List<SalesData> setData(ArrayList<String[]> reportData) {
+	List<SalesData> setData(ArrayList<String[]> reportData) {
 		 List<SalesData> list = new ArrayList<SalesData>();
 		 String[] eachLine = null;
 		 SalesData data = null;
@@ -61,5 +61,24 @@ public class ReadFile {
 			 list.add(data);
 		 }
 		 return list;
+	}
+
+	/* 파일에 첫 번째 줄이 있는지 확인하기 */
+	boolean isEmpty(String file) {
+		BufferedReader br;
+		boolean isEmpty = false;
+		try {
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "MS949"));
+			if ((br.readLine()) == null) {
+				isEmpty = true;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isEmpty;
 	}
 }
