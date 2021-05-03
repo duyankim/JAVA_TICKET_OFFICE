@@ -41,6 +41,40 @@ public class WriteFile {
 		}
 	}
 	
+	/* 권종별 판매 현황 파일 */
+	void salesTypeFile(List<SalesData> list) {
+		File file = new File(ConstValue.typeSales);
+		BufferedWriter bw = newBufferedWriter(file);
+
+		try {
+			if (file.exists() == true) {
+				
+				ReadFile read = new ReadFile();
+				if (read.isEmpty(file) != false) {
+					bw.append("구분, 주간권, 야간권\n");
+				}
+				
+				Calculation calc = new Calculation();
+				int[] daySum = calc.typeCalc(list, 0);
+				int[] nightSum = calc.typeCalc(list, 1);
+				
+				for (int i = 0; i < ConstValue.AGE.length; i++) {
+					bw.append(String.format("%s, %d, %d", ConstValue.AGE[i], daySum[i+2], nightSum[i+2]));
+				}
+				bw.append(String.format("%s, %d, %d", "합계", daySum[0], nightSum[0]));
+				bw.append(String.format("%s, %d, %d", "매출", daySum[1], nightSum[1]));
+				bw.close();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/* 버퍼 라이터 불러오기 */
 	BufferedWriter newBufferedWriter (File file) {
 		BufferedWriter bw = null;
 
