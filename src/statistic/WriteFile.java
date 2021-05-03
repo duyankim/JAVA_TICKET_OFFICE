@@ -51,7 +51,7 @@ public class WriteFile {
 				
 				ReadFile read = new ReadFile();
 				if (read.isEmpty(file) != false) {
-					bw.append("구분, 주간권, 야간권\n");
+					bw.append(String.format("%s, %s, %s", "구분", "주간권", "야간권"));
 				}
 				
 				Calculation calc = new Calculation();
@@ -63,6 +63,37 @@ public class WriteFile {
 				}
 				bw.append(String.format("%s, %d, %d", "합계", daySum[0], nightSum[0]));
 				bw.append(String.format("%s, %d, %d", "매출", daySum[1], nightSum[1]));
+				bw.close();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/* 우대권 판매 현황 파일 */
+	void discountSalesFile(List<SalesData> list) {
+		File file = new File(ConstValue.discountSales);
+		BufferedWriter bw = newBufferedWriter(file);
+
+		try {
+			if (file.exists() == true) {
+				
+				ReadFile read = new ReadFile();
+				if (read.isEmpty(file) != false) {
+					bw.append("구분, 매수\n");
+				}
+				
+				Calculation calc = new Calculation();
+				int[] sum = calc.dcCalc(list);
+				
+				for (int i = 0; i < ConstValue.AGE.length; i++) {
+					bw.append(String.format("%s, %d", ConstValue.DC[i], sum[i+1]));
+				}
+				bw.append(String.format("%s, %d", "합계", sum[0]));
 				bw.close();
 			}
 		} catch (FileNotFoundException e) {
