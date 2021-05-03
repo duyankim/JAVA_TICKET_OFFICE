@@ -3,11 +3,11 @@ package kiosk;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class GetInput {
+public class Input {
 
 	// 티켓 종류 입력
 	int inputTicketSelect() {
-		PrintOutput print = new PrintOutput();
+		OutputPrint print = new OutputPrint();
 		Scanner sc = new Scanner(System.in);
 		int ticketSelect;
 
@@ -30,7 +30,7 @@ public class GetInput {
 
 	// 주민등록번호 입력
 	long inputIDNumber() {
-		PrintOutput print = new PrintOutput();
+		OutputPrint print = new OutputPrint();
 		Scanner sc = new Scanner(System.in);
 		long idNum;
 
@@ -73,7 +73,7 @@ public class GetInput {
 
 	// 주문 갯수 입력
 	int inputOrderCount() {
-		PrintOutput print = new PrintOutput();
+		OutputPrint print = new OutputPrint();
 		Scanner sc = new Scanner(System.in);
 		int order;
 
@@ -94,7 +94,7 @@ public class GetInput {
 
 	// 우대사항 입력
 	int inputDiscountSelect() {
-		PrintOutput print = new PrintOutput();
+		OutputPrint print = new OutputPrint();
 		Scanner sc = new Scanner(System.in);
 		int dcSelect;
 

@@ -12,9 +12,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
 
-public class WriteFile {
+public class FileWrite {
 
-	public void writeFile(SetData data) throws IOException, FileNotFoundException {
+	public void writeFile(Data data) throws IOException, FileNotFoundException {
 		BufferedWriter bw;
 		
 		File file = new File(ConstValue.fileOutput);

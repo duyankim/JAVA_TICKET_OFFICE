@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RunMain {
+public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-		ArrayList<SetData> orderData = new ArrayList<SetData>();
-		GetInput input = new GetInput();
-		CalculatePrice price = new CalculatePrice();
-		PrintOutput print = new PrintOutput();
+		ArrayList<Data> orderData = new ArrayList<Data>();
+		Input input = new Input();
+		Calculation price = new Calculation();
+		OutputPrint print = new OutputPrint();
 		Scanner sc = new Scanner(System.in);
-		SetData data = null;
+		Data data = null;
 		
 		int isExit;
 		// 1) do while문을 탈출하지 않는다 2) 탈출한다
@@ -44,7 +44,7 @@ public class RunMain {
 				dcSelect = input.inputDiscountSelect();
 				
 				/* 요금 계산 */
-				CalculatePrice cal = new CalculatePrice();
+				Calculation cal = new Calculation();
 				
 				//만 나이 계산
 				age = cal.calcAge(idNum);
@@ -61,10 +61,10 @@ public class RunMain {
 				//주문 갯수에 따른 최종 금액 계산
 				priceResult = cal.calcPriceResult(dcPrice, ticketCount);
 				
-				data = new SetData(dayOrNight, age, ticketCount, dcSelect, priceResult);
+				data = new Data(dayOrNight, age, ticketCount, dcSelect, priceResult);
 
 				/* 주문내역 저장 */
-				SaveData save = new SaveData();
+				DataSave save = new DataSave();
 				save.saveOrder(data, orderData);
 				
 				/* 요금 합계 계산 */

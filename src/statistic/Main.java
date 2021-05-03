@@ -3,22 +3,22 @@ package statistic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RunMain {
+public class Main {
 
 	public static void main(String[] args) {
-		ReadFile read = new ReadFile();
+		FileRead read = new FileRead();
 		List<SalesData> list;
 		
 		ArrayList<String[]> data = read.readFile();
 		list = read.setData(data);
 		
-		PrintOutput print = new PrintOutput();
+		OutputPrint print = new OutputPrint();
 		print.allDataPrint(list);
 		print.salesTypePrint(list);
 		print.dailyIncomePrint(list);
 		print.dcIncomePrint(list);
 		
-		WriteFile write = new WriteFile();
+		FileWrite write = new FileWrite();
 		write.dailySalesFile(list);
 	}
 }

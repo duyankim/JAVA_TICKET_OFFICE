@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WriteFile {
+public class FileWrite {
 
 	/* 일자별 매출 파일 */
 	void dailySalesFile(List<SalesData> list) {
@@ -20,7 +20,7 @@ public class WriteFile {
 		try {
 			if (file.exists() == true) {
 				
-				ReadFile read = new ReadFile();
+				FileRead read = new FileRead();
 				if (read.isEmpty(file) != false) {
 					bw.append("일자, 총 매출\n");
 				}
@@ -49,7 +49,7 @@ public class WriteFile {
 		try {
 			if (file.exists() == true) {
 				
-				ReadFile read = new ReadFile();
+				FileRead read = new FileRead();
 				if (read.isEmpty(file) != false) {
 					bw.append(String.format("%s, %s, %s", "구분", "주간권", "야간권"));
 				}
@@ -82,7 +82,7 @@ public class WriteFile {
 		try {
 			if (file.exists() == true) {
 				
-				ReadFile read = new ReadFile();
+				FileRead read = new FileRead();
 				if (read.isEmpty(file) != false) {
 					bw.append("구분, 매수\n");
 				}

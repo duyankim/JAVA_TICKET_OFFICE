@@ -9,7 +9,7 @@ public class DbOutput {
 	private Connection conn;
 	private Statement stmt;
 	
-	public void connectDB(SetData data) {
+	public void connectDB(Data data) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "000000");
@@ -24,7 +24,7 @@ public class DbOutput {
 		}
 	}
 	
-	public void addToDB(SetData data) {
+	public void addToDB(Data data) {
 		try {
 			java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
 			

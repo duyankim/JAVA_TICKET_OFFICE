@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PrintOutput {
+public class OutputPrint {
 
 	// 에러 메세지 출력
 	void printErrorMsg() {
@@ -24,11 +24,11 @@ public class PrintOutput {
 	}
 
 	/* 주문 내역 출력 */
-	public void orderPrint(int totalPrice, ArrayList<SetData> orderData) throws FileNotFoundException, IOException {
-		CalculatePrice price = new CalculatePrice();
-		WriteFile write = new WriteFile();
+	public void orderPrint(int totalPrice, ArrayList<Data> orderData) throws FileNotFoundException, IOException {
+		Calculation price = new Calculation();
+		FileWrite write = new FileWrite();
 		DbOutput db = new DbOutput();
-		SetData data = null;
+		Data data = null;
 
 		// 콘솔에 프린트
 		System.out.printf("티켓 발권을 종료합니다. 감사합니다\n");
@@ -54,7 +54,7 @@ public class PrintOutput {
 
 	/* 이어서 주문 또는 주문내역 출력 후 종료 */
 	public int orderContinue() throws IOException {
-		PrintOutput print = new PrintOutput();
+		OutputPrint print = new OutputPrint();
 		Scanner sc = new Scanner(System.in);
 		int continueSelect;
 

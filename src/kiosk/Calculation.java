@@ -2,7 +2,7 @@ package kiosk;
 
 import java.util.Calendar;
 
-public class CalculatePrice {
+public class Calculation {
 
 	/* 만나이 계산 */
 	int calcAge(long idNum) {

@@ -3,7 +3,7 @@ package statistic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrintOutput {
+public class OutputPrint {
 	
 	/* 파일 모든 결과 출력 */
 	void allDataPrint(List<SalesData> list) {

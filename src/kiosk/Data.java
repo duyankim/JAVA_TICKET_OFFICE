@@ -3,7 +3,7 @@ package kiosk;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SetData {
+public class Data {
 	private int dayOrNight;
 	private int ticketCount;
 	private int dcGroup;
@@ -13,11 +13,11 @@ public class SetData {
 	private int ageGroup;
 	private String date;
 
-	public SetData () {
+	public Data () {
 		
 	}
 
-	public SetData (int dayOrNight, int age, int ticketCount, int dcGroup, int resultPrice) {
+	public Data (int dayOrNight, int age, int ticketCount, int dcGroup, int resultPrice) {
 		this.dayOrNight = dayOrNight;
 		this.age = age;
 		this.ticketCount = ticketCount;

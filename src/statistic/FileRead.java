@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 import java.util.List;
 
-public class ReadFile {
+public class FileRead {
 
 	/* 파일 읽기 */
 	ArrayList<String[]> readFile() {
