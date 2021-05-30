@@ -6,7 +6,7 @@
 
 ## 클래스 구조
 ```
-C:.
+JAVA_TICKET_OFFICE
 |   .classpath
 |   .gitignore
 |   .project
